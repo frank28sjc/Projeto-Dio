@@ -1,0 +1,32 @@
+import React, { useState } from 'react';
+import './style.css';
+
+export default function App() {
+  const [origem, setOrigem] = useState('início');
+  return (
+    <div style={cssApp}>
+      <div>Origem: {origem}</div>
+      <A set={setOrigem} letra="A" />
+      <B set={setOrigem} letra="B" />
+    </div>
+  );
+}
+
+function A(props) {
+  return <C set={props.set} letra={props.letra} />;
+}
+
+function B(props) {
+  return <C set={props.set} letra={props.letra} />;
+}
+
+function C(props) {
+  return (
+    <div style={cssC}>
+      <button onClick={() => props.set(props.letra)}>Clicar</button>
+    </div>
+  );
+}
+
+const cssApp = { backgroundColor: '#836FFF', padding: 5 };
+const cssC = { backgroundColor: 'yellow', marginTop: 5 };
